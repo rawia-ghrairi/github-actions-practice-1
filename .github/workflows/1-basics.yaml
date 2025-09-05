@@ -1,4 +1,4 @@
-name: Practice 1: GitHub Actions Basics
+name: GitHub Actions Basics
 
 on:
   workflow_dispatch:
