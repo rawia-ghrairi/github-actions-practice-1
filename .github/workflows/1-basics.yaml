@@ -1,5 +1,5 @@
 name: My First Workflow
-on: [push]  # Trigger on every push
+on: [push] 
 
 jobs:
   hello-job:
