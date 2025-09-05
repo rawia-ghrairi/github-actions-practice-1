@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Simple greeting
-        run: echo "Hello, GitHub Actions!"
+        run: echo "Hello, GitHub Actions"
       - name: Show current date
         run: date
       - name: List current directory
