@@ -1,5 +1,5 @@
 name: My First Workflow
-on: [push]  # Déclenchement à chaque push
+on: [push]
 
 jobs:
   # Job 1: Hello
