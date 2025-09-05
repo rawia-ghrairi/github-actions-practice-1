@@ -30,6 +30,7 @@ jobs:
              cat test.txt
 
   job_3:
+    needs: [job_1, job_2]
     runs-on: ubuntu-latest
     steps:
       - name: Wait message
