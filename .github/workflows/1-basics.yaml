@@ -29,6 +29,7 @@ jobs:
           cat test.txt
   Summary_Report:
     runs-on: unbunto-lasted
+    needs: [hello_job, check_system]
     steps:
       - name: Wait message
         run: echo "Both previous jobs completed successfully!"
