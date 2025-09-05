@@ -8,7 +8,7 @@ jobs:
   hello_job:
     runs-on: ubunto-lasted
     steps:
-      -
+
       - name: Simple greeting
         run: echo "Hello, GitHub Actions!"
       - name: Show current date
