@@ -2,7 +2,7 @@ name: Practice 1 Workflow
 on: [push]  # Trigger on every push
 
 jobs:
-  job 1 (hello-job):
+  job_1_hello-job:
     runs-on: ubuntu-latest
     steps:
       - name: Simple greeting
@@ -14,7 +14,7 @@ jobs:
       - name: List current directory
         run: ls -la
 
-  job 2 system-job:
+  job_2_system-job:
     runs-on: ubuntu-latest
     steps:
       - name: Show system information (multi-line command)
@@ -29,7 +29,7 @@ jobs:
              echo "This is a test file" > test.txt
              cat test.txt
 
-  job 3 Summary Report (summary-job):
+  job_3_Summary_Report_summary-job:
     runs-on: ubuntu-latest
     steps:
       - name: Wait message
