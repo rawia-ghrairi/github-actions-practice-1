@@ -1,0 +1,44 @@
+name: Practice 1 Workflow
+on: [push]  # Trigger on every push
+
+jobs:
+  job 1 (hello-job):
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple greeting
+        run: echo "Hello, GitHub Actions!"
+
+      - name: Show current date
+        run: date
+
+      - name: List current directory
+        run: ls -la
+
+  job 2 system-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show system information (multi-line command)
+        run:  |
+              echo "=== System Info ==="
+              echo "Operating System: $(uname -s)"
+              echo "Current User: $(whoami)"
+              echo "Working Directory: $(pwd)"
+
+      - name: Create a simple file
+        run: |
+             echo "This is a test file" > test.txt
+             cat test.txt
+
+  job 3 Summary Report (summary-job):
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait message
+        run: echo "Both previous jobs completed successfully!"
+
+      - name: Final summary (multi-line command)
+        run:  |
+              echo "=== Workflow Summary ==="
+              echo "Repository: ${{ github.repository }}"
+              echo "Branch: ${{ github.ref_name }}"
+              echo "Triggered by: ${{ github.actor }}"
+              echo "All jobs completed at: $(date)"
