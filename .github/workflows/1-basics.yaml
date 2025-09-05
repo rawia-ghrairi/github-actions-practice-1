@@ -1,9 +1,9 @@
-name: GitHub Actions Basics Practice
+name: GitHub Actions Basics Practice #the name of the workflow
 
 # Trigger the workflow on push to any branch or manual dispatch
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
