@@ -1,0 +1,27 @@
+# Selective Branch and Path Filtering Workflow
+# This workflow demonstrates how to use event filters to optimize CI/CD performance
+# by only running on specific branches and ignoring documentation changes
+
+name: Selective Branch and Path Filtering
+
+# Configure the workflow to only trigger under specific conditions
+on:
+  push:
+    # Only run on these branches
+    branches:
+      - dev                 # Development branch
+      - 'release/*'         # Any release branch (release/v1.0, release/v2.1, etc.)
+    
+    # Ignore changes that only affect documentation
+    paths-ignore:
+      - 'docs/**'           # Ignore all files in docs/ directory and subdirectories
+
+jobs:
+  test-filters:
+    # Use Ubuntu latest runner
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Display success message with branch information
+      - name: Event Filters Working
+        run: echo "Event filters working! Triggered on ${{ github.ref_name }} branch"
