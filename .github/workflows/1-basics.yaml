@@ -1,8 +1,13 @@
-name: Practice 1 Workflow
-on: [push]  # Trigger on every push
+name: Practice 1 - GitHub Actions Basics
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
 
 jobs:
-  job_1:
+  hello-job:
+    name: Say Hello
     runs-on: ubuntu-latest
     steps:
       - name: Simple greeting
@@ -14,32 +19,33 @@ jobs:
       - name: List current directory
         run: ls -la
 
-  job_2:
+  system-job:
+    name: Check System
     runs-on: ubuntu-latest
     steps:
-      - name: Show system information (multi-line command)
-        run:  |
-              echo "=== System Info ==="
-              echo "Operating System: $(uname -s)"
-              echo "Current User: $(whoami)"
-              echo "Working Directory: $(pwd)"
-
+      - name: Show system information
+        run: |
+          echo "=== System Info ==="
+          echo "Operating System: $(uname -s)"
+          echo "Current User: $(whoami)"
+          echo "Working Directory: $(pwd)"
       - name: Create a simple file
         run: |
-             echo "This is a test file" > test.txt
-             cat test.txt
+          echo "This is a test file" > test.txt
+          cat test.txt
 
-  job_3:
-    needs: [job_1, job_2]
+  summary-job:
+    name: Summary Report
     runs-on: ubuntu-latest
+    needs: [ hello-job, system-job ]
     steps:
       - name: Wait message
         run: echo "Both previous jobs completed successfully!"
 
-      - name: Final summary (multi-line command)
-        run:  |
-              echo "=== Workflow Summary ==="
-              echo "Repository: ${{ github.repository }}"
-              echo "Branch: ${{ github.ref_name }}"
-              echo "Triggered by: ${{ github.actor }}"
-              echo "All jobs completed at: $(date)"
+      - name: Final summary
+        run: |
+          echo "=== Workflow Summary ==="
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Triggered by: ${{ github.actor }}"
+          echo "All jobs completed at: $(date)"
