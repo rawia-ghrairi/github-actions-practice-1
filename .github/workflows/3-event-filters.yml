@@ -1,4 +1,19 @@
 name: Event Filters
 on:
+ push:
+  branches:
+   -main
+   -'releases/**'
+  paths-ignore:
+   -'docs/**'
 
 jobs:
+ node-16-tests:
+  runs-on: ubuntu-latest
+  steps:
+   -uses: actions/setup-node@v3
+   with:
+    node-version: 16
+   -run: npm ci
+   -run: npm test
+
