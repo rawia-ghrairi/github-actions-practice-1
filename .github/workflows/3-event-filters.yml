@@ -2,18 +2,14 @@ name: Event Filters
 on:
  push:
   branches:
-   -main
-   -'releases/**'
+   -dev
+   -'releases/*'
   paths-ignore:
-   -'docs/**'
+   -'docs/'
 
 jobs:
- node-16-tests:
+ test-filters:
   runs-on: ubuntu-latest
   steps:
-   -uses: actions/setup-node@v3
-   with:
-    node-version: 16
-   -run: npm ci
-   -run: npm test
+   -run: echo "Event filters working! Triggered on ${{ github.ref_name }} branch"
 
