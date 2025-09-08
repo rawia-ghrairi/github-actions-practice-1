@@ -1,14 +1,4 @@
-name: Practice 2 - Event Name Detector
-
+name: Workflow Events
 on:
-  workflow_dispatch:
-  push:
-  pull_request:
 
 jobs:
-  echo:
-    name: Event Name Detector
-    runs-on: ubuntu-latest
-    steps:
-      - name: Show which event triggered
-        run: echo "I've been triggered by ${{ github.event_name }} event"
