@@ -87,6 +87,8 @@ Test secrets access (you need to create these secrets first):
 echo "=== Secrets Availability Check ==="
 echo "Has TEST_API_KEY secret: ${{ secrets.TEST_API_KEY != '' }}"
 echo "Has DATABASE_URL secret: ${{ secrets.DATABASE_URL != '' }}"
+echo "TEST_API_KEY env: ${{ env.TEST_API_KEY }}"
+echo "DATABASE_URL env: ${{ env.DATABASE_URL }}"
 echo "API key configured: ${{ secrets.TEST_API_KEY != '' && 'YES' || 'NO' }}"
 echo "Database URL starts with 'postgresql': ${{ startsWith(secrets.DATABASE_URL, 'postgresql') }}"
 ```
@@ -94,8 +96,8 @@ echo "Database URL starts with 'postgresql': ${{ startsWith(secrets.DATABASE_URL
 **Environment block for this step:**
 ```yaml
 env:
-  TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  TEST_API_KEY: "key"
+  DATABASE_URL: "db url"
 ```
 
 ---
@@ -149,9 +151,8 @@ Transform and manipulate string data from context:
 ```bash
 echo "=== String Transformations ==="
 echo "Original ref: ${{ github.ref }}"
-echo "Clean branch name: ${{ replace(github.ref, 'refs/heads/', '') }}"
-echo "Uppercase branch: ${{ upper(github.ref_name) }}"
-echo "Lowercase branch: ${{ lower(github.ref_name) }}"
+#echo "Uppercase branch: ${{ upper(github.ref_name) }}"
+#echo "Lowercase branch: ${{ lower(github.ref_name) }}"
 echo "Branch contains 'main': ${{ contains(github.ref_name, 'main') }}"
 echo "Branch starts with 'feature': ${{ startsWith(github.ref_name, 'feature/') }}"
 
